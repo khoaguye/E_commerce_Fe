@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  
+}
+.overflow-y-auto::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background-color: transparent;
+  }

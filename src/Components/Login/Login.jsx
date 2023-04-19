@@ -1,49 +1,31 @@
-import React, {useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import "./Login.css";
 export const Login = () => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-    // const handleEmailChange = (e) =>{
-    //     setEmail(e.target.value)
-    //     console.log(email)
-    // }
-    // const handlePasswordChange = (e) =>{
-    //     setPass(e.target.value)
-    //     console.log(pass)
-    // }
 
     const [inputs, setInputs] = useState({
         username: "",
         pw: "",
-      });
-    
+    });
+
     const [err, setErr] = useState(null);
 
     const navigate = useNavigate();
 
-    // const {currentUser} = useContext(AuthContext);
-    
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
     const { login } = useContext(AuthContext);
-    
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-          await login(inputs);
-          navigate("/")
-    } catch (err) {
-          setErr(err.response.data);
-        //   setErr("Example error message!");
-    }
+            await login(inputs);
+            navigate("/")
+        } catch (err) {
+            setErr(err.response.data);
+        }
     };
     return (
 
@@ -60,9 +42,8 @@ export const Login = () => {
                             id="email"
                             type="email"
                             placeholder="Username"
-                            name = "username"
-                            // onChange = {handleEmailChange}
-                            onChange = {handleChange}
+                            name="username"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="mb-4">
@@ -74,9 +55,8 @@ export const Login = () => {
                             id="password"
                             type="password"
                             placeholder="Password"
-                            name = "pw"
-                            // onChange = {handlePasswordChange}
-                            onChange = {handleChange}
+                            name="pw"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="flex items-center justify-between">
@@ -87,7 +67,7 @@ export const Login = () => {
                         >
                             Sign In
                         </button>
-                        {err?<p className ="text-red-600">{err}</p>:null}
+                        {err ? <p color="red">{err}</p> : null}
                         <a
                             className="inline-block align-baseline font-bold text-sm text-green-900 hover:text-green-500"
                             href="#"
@@ -96,12 +76,12 @@ export const Login = () => {
                         </a>
                     </div>
                 </form>
-                <Link to = "/user/register">
-                <div className="mt-5">
-  <p class="pb-2 border-b-2">New User? Register Here!!!</p>
+                <Link to="/user/register">
+                    <div className="mt-5">
+                        <p class="pb-2 border-b-2">New User? Register Here!!!</p>
 
-</div>
-</Link>
+                    </div>
+                </Link>
             </div>
         </div>
 

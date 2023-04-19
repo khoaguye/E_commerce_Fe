@@ -4,12 +4,6 @@ import "./Register.css";
 import axios from "axios";
 
 export const Register = () => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-    // const [fname, setFName] = useState('');
-    // const [lname, setlName] = useState('');
-    // const [phonenum, setPhoneNum] = useState('');
-    // const [address, setAd] = useState('');
 
     const [inputs, setInputs] = useState({
         fname: "",
@@ -17,9 +11,10 @@ export const Register = () => {
         username: "",
         pw: "",
         email: "",
-        address:"",
-        phone: ""
-      });
+        address: "",
+        phone: "",
+        role:"user" //added role
+    });
 
     const [err, setErr] = useState(null);
 
@@ -33,187 +28,136 @@ export const Register = () => {
     var form2 = document.getElementById('signInForm2');
     const handleClick = async (e) => {
         e.preventDefault();
-        
+
         try {
-          await axios.post("http://localhost:8800/api/user/register", inputs);
-          setErr("Success! Who's a good boi!");
-        //   form.reset();
-        //   form2.reset();
-          window.location.replace("http://localhost:3000/user/login");
+            await axios.post("http://localhost:8800/api/user/register", inputs);
+            setErr("Success! Who's a good boi!");
+            //   form.reset();
+            //   form2.reset();
+            window.location.replace("http://localhost:3000/user/login");
         } catch (err) {
-          setErr(err.response.data);
+            setErr(err.response.data);
         }
-        
+
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-
-    // const handleEmailChange = (e) => {
-    //     setEmail(e.target.value)
-    //     console.log(email)
-    // }
-    // const handlePasswordChange = (e) => {
-    //     setPass(e.target.value)
-    //     console.log(pass)
-    // }
-    // const handleFnameChange = (e) => {
-    //     setFName(e.target.value)
-    //     console.log(fname)
-    // }
-    // const handleLnameChange = (e) => {
-    //     setlName(e.target.value)
-    //     console.log(lname)
-    // }
-    // const handleAddressChange = (e) => {
-    //     setAd(e.target.value)
-    //     console.log(address)
-    // }
-    // const handlePhoneChange = (e) => {
-    //     setPhoneNum(e.target.value)
-    //     console.log(phonenum)
-    // }
-    // // starting change
-    // const handleUsernameChange = (e) => {
-    //     setPhoneNum(e.target.value)
-    //     console.log(phonenum)
-    // }
-    // // ending change
     return (
         <div className="login-form flex items-center justify-center h-screen  ">
             <div className="formm bg-light-grey flex flex-col gap-4 items-center justify-center w-[80%] md:w-[55%]  overflow-auto border border-black  py-2 rounded-md ">
-            <h2 className="text-3xl font-bold mb-8 text-green-900 ">Register</h2>
-            <div className = "flex flex-col md:flex-row w-[70%] justify-around items-center gap-4">
-                <div>                
-                    <form className="w-[100%] " id="signInForm">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
-                            First Name:
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="fname"
-                            type="text"
-                            placeholder="First name"
-                            name ="fname"
-                            onChange={handleChange}
-                            // onChange={handleFnameChange}
-                        />
-                    </div>
-                    <div className="mb-4 ">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
-                            Last Name:
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="fname"
-                            type="text"
-                            placeholder="Last name"
-                            name ="lname"
-                            onChange={handleChange}
-                            // onChange={handleLnameChange}
-                        />
-                    </div>
+                <h2 className="text-3xl font-bold mb-8 text-green-900 ">Register</h2>
+                <div className="flex flex-col md:flex-row w-[70%] justify-around items-center gap-4">
+                    <div>
+                        <form className="w-[100%] " id="signInForm">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                    First Name:
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="fname"
+                                    type="text"
+                                    placeholder="First name"
+                                    name="fname"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-4 ">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                    Last Name:
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="fname"
+                                    type="text"
+                                    placeholder="Last name"
+                                    name="lname"
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="email">
-                            Email
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="email"
-                            type="email"
-                            placeholder="Email"
-                            name ="email"
-                            onChange={handleChange}
-                            // onChange={handleEmailChange}
-                        />
-                    </div>
-                   {/* start change */}
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
-                            Username
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username"
-                            type="text"
-                            placeholder="username"
-                            name ="username"
-                            onChange={handleChange}
-                            // onChange={handleUsernameChange}
-                        />
-                    </div> 
-                    {/* end change */}
-                    </form>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="email">
+                                    Email
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="email"
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
+                                    Username
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="username"
+                                    type="text"
+                                    placeholder="username"
+                                    name="username"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </form>
                     </div>
                     <div>
-                    <form className="w-[100%]" id="signInForm2">
-                
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                            name = "pw"
-                            onChange={handleChange}
-                            // onChange={handleAddressChange}
-                        />
-                    </div>
+                        <form className="w-[100%]" id="signInForm2">
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
-                            Address
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="text"
-                            type=""
-                            placeholder="Address"
-                            name = "address"
-                            onChange={handleChange}
-                            // onChange={handlePhoneChange}
-                        />
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                    Password
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="password"
+                                    type="password"
+                                    placeholder="Password"
+                                    name="pw"
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                    Address
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="text"
+                                    type=""
+                                    placeholder="Address"
+                                    name="address"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                    Phone
+                                </label>
+                                <input
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="password"
+                                    type="text"
+                                    placeholder="Phone Number"
+                                    name="phone"
+                                    onChange={handleChange}
+
+                                />
+                            </div>
+                        </form>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
-                            Phone
-                        </label>
-                        <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
-                            type="text"
-                            placeholder="Phone Number"
-                            name = "phone"
-                            onChange={handleChange}
-                            
-                            // onChange={handlePasswordChange}
-                        />
-                    </div>
-                    {/* <button
-                            className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                            onClick={handleClick}
-                        >
-                            Register
-                        </button> */}
-                </form>
-                </div>
                 </div>
                 <button
-                            className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                            onClick={handleClick}
-                        >
-                            Register
-                        </button>
-                        {err && err}
+                    className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
+                    onClick={handleClick}
+                >
+                    Register
+                </button>
+                {err && err}
                 <Link to="/user/login">
                     <div className="mt-5">
                         <p class="pb-2 border-b-2">Already have account? Login Here!!!</p>

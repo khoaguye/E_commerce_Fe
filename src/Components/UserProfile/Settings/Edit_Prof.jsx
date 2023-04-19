@@ -24,7 +24,7 @@ function EditProf() {
         fname: currentUser.fname,
         lname: currentUser.lname,
         address: currentUser.address,
-        email: currentUser.email,
+        // email: currentUser.email,
         phone: currentUser.phone
     });
 
@@ -103,7 +103,7 @@ function EditProf() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col md:flex-row justify-around ">
+                <div className=" w-[75%] flex flex-col md:flex-row justify-around ">
                     <Link to="/user/settings" className="">
                         <button type="button" className="rounded-full text-base  font-bold bg-gradient-to-r bg-orange-500 hover:from-orange-600 hover:to-rose-500 ">
                             Back to Settings
@@ -112,11 +112,13 @@ function EditProf() {
 
                     <form className="w-[75%] " id="signInForm">
                         <div className="mb-4">
+                           
                             <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
                                 First Name:
                             </label>
                             <input
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                // className="translate-x-4 sm:-translate-y-20 sm:translate-x-4 px-auto mb-0 sm:mb-0 sm:mt-20 sm:text-2xl md:text-3xl md:-translate-x-4 -translate-y-0 border-b-2 border-black"
                                 id="fname"
                                 type="text"
                                 placeholder="First name"
@@ -156,7 +158,7 @@ function EditProf() {
                             />
                         </div>
                     
-                        <div className="mb-4">
+                        {/* <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
                                 Email
                             </label>
@@ -169,7 +171,7 @@ function EditProf() {
                                 onChange={handleChange}
 
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
                                 Phone
@@ -187,7 +189,7 @@ function EditProf() {
 
                         <div className="mb-4">
                             <button
-                                className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                className="w-[100%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="button"
                                 onClick={handleClick}
                             >

@@ -75,32 +75,35 @@ function UserProf() {
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Firstname:</p>
-              <p class="text-center px-4 ">{currentUser?.data.fname}</p>
+              <p class="w-56 sm:w-60 px-1 ">{currentUser?.data.fname}</p>
 
             </div>
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Lastname:</p>
-              <p class="text-center px-4 ">{currentUser?.data.lname}</p>
+              <p class="w-56 sm:w-60 px-1 ">{currentUser?.data.lname}</p>
 
             </div>
 
             <div class="flex justify-center text-lg sm:text-xl   h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Address:</p>
-              <p class="w-56 sm:w-64 px-1 ">{currentUser?.data.address}</p>
+              {/* <p class="w-56 sm:w-85 px-1 ">{currentUser?.data.address}</p> */}
+              <p class="w-56 sm:w-85 px-1 ">{currentUser?.data.address}</p>
 
 
             </div>
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Email:</p>
-              <p class="text-center px-4 ">{currentUser?.data.email}</p>
+              <p class="w-56 sm:w-85 px-1 ">{currentUser?.data.email}</p>
 
             </div>
 
             <div class="flex justify-center mx-auto h-8 w-auto border-b-2  border-neutral-800">
-              <p class="w-24">Phone:</p>
-              <p class="w-48 px-0 ">{currentUser?.data.phone}</p>
+              {/* <p class="w-24">Phone:</p> */}
+              <p class="">Phone:</p>
+              <p class="w-[56 sm:w-60 px-1] ">{currentUser?.data.phone}</p>
+              
 
 
 

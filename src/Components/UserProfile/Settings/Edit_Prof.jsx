@@ -121,7 +121,7 @@ function EditProf() {
                                 // className="translate-x-4 sm:-translate-y-20 sm:translate-x-4 px-auto mb-0 sm:mb-0 sm:mt-20 sm:text-2xl md:text-3xl md:-translate-x-4 -translate-y-0 border-b-2 border-black"
                                 id="fname"
                                 type="text"
-                                placeholder="First name"
+                                placeholder={currentUser?.data.fname}
                                 name="fname"
                                 onChange={handleChange}
 
@@ -135,7 +135,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="fname"
                                 type="text"
-                                placeholder="Last name"
+                                placeholder={currentUser?.data.lname}
                                 name="lname"
                                 onChange={handleChange}
 
@@ -150,7 +150,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="email"
-                                placeholder="Address"
+                                placeholder={currentUser?.data.address}
                                 name="address"
                                 onChange={handleChange}
 
@@ -180,7 +180,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="username"
                                 type="text"
-                                placeholder="Phone"
+                                placeholder={currentUser?.data.phone}
                                 name="phone"
                                 onChange={handleChange}
 

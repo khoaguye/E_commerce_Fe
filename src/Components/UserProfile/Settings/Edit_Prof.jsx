@@ -66,7 +66,7 @@ function EditProf() {
 
                     <ul className=' text-[1.5rem] flex flex-col md:flex-row px-2 justify-between'>
 
-                        <Link to="/">
+                        <Link to="/">   
                             <a href="#" className=" h-0 md:inset-y-0  text-neutral-700 md:text-[1.5rem] flex sm:translate-y-12 md:translate-y-8"><span className=' sm:text-4xl md:text-[3rem] text-[1.5rem] font-bold'>Sahara</span><img src={pyramid} alt="pyramid" className="translate-y-1 ml-0 my-auto md:mx-auto sm:pr-40 md:pr-20  mb-auto h-7 sm:translate-y-2.5 md:translate-y-1  md:h-10  md:translate-x-0" /></a>
                         </Link>
 
@@ -158,20 +158,6 @@ function EditProf() {
                             />
                         </div>
                     
-                        {/* <div className="mb-4">
-                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
-                                Email
-                            </label>
-                            <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="username"
-                                type="text"
-                                placeholder="Email"
-                                name="email"
-                                onChange={handleChange}
-
-                            />
-                        </div> */}
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
                                 Phone

@@ -6,6 +6,7 @@ import headPhone from "./a.png"
 import { Link } from 'react-router-dom'
 import backgroundImage from './sahara-background.png';
 import bannerImg from './banner.png'
+import './Navbar.css' 
 function Navbar() {
     const [menuToggle, setMenuToggle] = useState(false)
     
@@ -31,33 +32,15 @@ function Navbar() {
          }
      </div>
 
-     {/* <div
-      className=" mt-10 relative bg-center bg-cover h-[70%] flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
-      <div className="absolute top-1/4 w-full text-center">
-        <h1 className="text-4xl sm:text-6xl font-bold text-white mb-4">
-          Welcome to Sahara
-        </h1>
-        <p className="text-white text-lg sm:text-xl md:text-2xl font-medium">
-          Your one-stop shop for all your fashion needs
-        </p>
-        <button className="mt-8 bg-white text-black font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-200">
-          Shop Now
-        </button>
-      </div>
-    </div> */}
     <div className="h-[90%] mt-4 bg-sand "
      style={{backgroundImage: `url(${bannerImg})`,
      backgroundPosition: 'center',
      backgroundSize: 'contain',
      backgroundRepeat: 'no-repeat',}}>
-      <div className='w-[80%] mx-auto my-auto pt-[2em] h-[60%]'>
-      <h1 className="text-[6rem] font-bold text-yellow-600 mt-8"> Sahahra</h1>
-      <p className =" hidden md:block font-light  lg:text-[1.5rem] md:text-[0.25rem]"> Your one-stop shop for all your needs, at affordable <br/> prices to fit every budget. Your happiness is the reason <br/>for our success</p>
-      <button className="mt-8 bg-white text-black font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-200">
+      <div className='float-up w-[80%] mx-auto my-auto pt-[2em] h-[60%]'>
+      <h1 className=" text-[5rem] md:text-[6rem] font-bold text-yellow-600 mt-8"> Sahara</h1>
+      <p className =" hidden md:block font-light  lg:text-[1.5rem] md:text-[0.25rem]"> Your one-stop shop for all your needs, at affordable <br/> prices for every budget. Your happiness is the  reason <br/>for our success</p>
+       <button className=" ml-[3em] md:ml-0 mt-8 bg-white text-black font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-200">
           Shop Now
         </button>
         </div>

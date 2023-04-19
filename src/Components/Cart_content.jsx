@@ -63,7 +63,7 @@ const datetime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 console.log(datetime);
 console.log(currentUser)
   const orderContain = {
-    uid : currentUser?.id,
+    uid : currentUser?.data.id,
     date: datetime,
     orderStatus: "Shiped",
     cart: cart.map( item => ({productId: item.id, quantity: item.quantity}))

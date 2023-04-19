@@ -13,14 +13,14 @@ const Menu = () => {
        
         {currentUser ? ( 
            <Link to = "/user/profile">
-          <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Hello, {currentUser?.fname} !</li>
+          <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Hello, {currentUser?.data.fname} !</li>
           </Link>
         ):(<li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300"></li>)}
         <Link to="/product">
           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Products</li>
         </Link>
         <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Deals</li>
-        <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Your wish list</li>
+        <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">{currentUser?.data.role}</li>
         {/* <Link to="/user/login">
           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Sign In</li>
         </Link> */}

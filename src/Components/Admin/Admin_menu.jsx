@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Product_manage from "./Product_manage";
 import Sale_manage from "./Sale_manage";
 import Admin_manage from "./Admin_manage";
@@ -6,10 +6,12 @@ import {BsFillPersonFill, BsFillBagCheckFill} from "react-icons/bs"
 import {HiShoppingCart} from "react-icons/hi"
 import {RiMoneyDollarCircleFill} from "react-icons/ri"
 import PromoteManage from "./PromoteManage";
-
+import axios from "axios";
 
 function App() {
+
   const [selectedMenuItem, setSelectedMenuItem] = useState("admin_manage");
+  const [admin, setAdmin] = useState([])
 
   const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
@@ -28,6 +30,37 @@ function App() {
     }
   };    
 
+  
+  useEffect(() =>{
+     async function fetchAdmin() {
+       try {
+         const user = JSON.parse(localStorage.getItem("user"));
+         const token = user.token;
+        console.log(token)
+         const response = await axios.get("/user/getAdmin", {
+         headers: {
+          token: `Bearer ${token}`, // add Authorization header with token value
+         },
+        }) 
+         console.log(response.data)
+         setAdmin(response.data)
+         console.log(admin)
+       } catch (error) {
+         console.log(error)
+       }
+     }
+     fetchAdmin()
+  },[])
+
+  if(admin.length <= 0){
+    return 
+    (
+    <div >
+       <p className="text-red-600 text-[3rem]">You are not allow at this page</p>
+    </div>
+    )
+  }
+  else{
   return (
     <div className="grid grid-cols-1  md:grid-cols-4 mt-5  gap-4 md:h-[90vh]">
       <div className="ml-4 border-b md:border-b-0 md:border-r-4 border-light-grey pb-4 md:pr-10">
@@ -74,6 +107,7 @@ function App() {
       <div className="content col-span-3">{renderContent()}</div>
     </div>
   );
+}
 }
 
 export default App;

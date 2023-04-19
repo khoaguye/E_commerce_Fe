@@ -5,6 +5,7 @@ import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 import headPhone from "./a.png"
 import { Link } from 'react-router-dom'
 import backgroundImage from './sahara-background.png';
+import bannerImg from './banner.png'
 function Navbar() {
     const [menuToggle, setMenuToggle] = useState(false)
     
@@ -30,17 +31,7 @@ function Navbar() {
          }
      </div>
 
-        {/* <div className ="bg-light-pink mt-[2em] object-contain w-[100%] h-[80%] md:h-[80%] text-center p-5 flex flex-col justify-around md:flex-row overflow-hidden">
-        <div className=" md:h-[50%] md:my-auto">
-            <h1 className= " md:text-[4rem] text-[1.5rem] text-green-900 text-bold">Welcome To Shop for You</h1>
-            <p className = "md:text-[1.5rem]" > ALL item is sale up to 50%</p>
-            <Link to = "/product">
-            <button className = "bg-green-900 rounded-full border px-10 md:text-[1.25rem] py-2 text-white text-strong mt-3"> Buy Now</button>
-            </Link>
-            </div> 
-            <img src={headPhone} alt="headphone" className=" mx-auto w-[140px] md:w-[450px]"/>
-        </div> */}
-                <div
+     {/* <div
       className=" mt-10 relative bg-center bg-cover h-[70%] flex items-center justify-center"
       style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -57,8 +48,21 @@ function Navbar() {
           Shop Now
         </button>
       </div>
+    </div> */}
+    <div className="h-[90%] mt-4 bg-sand "
+     style={{backgroundImage: `url(${bannerImg})`,
+     backgroundPosition: 'center',
+     backgroundSize: 'contain',
+     backgroundRepeat: 'no-repeat',}}>
+      <div className='w-[80%] mx-auto my-auto pt-[2em] h-[60%]'>
+      <h1 className="text-[6rem] font-bold text-yellow-600 mt-8"> Sahahra</h1>
+      <p className =" hidden md:block font-light  lg:text-[1.5rem] md:text-[0.25rem]"> Your one-stop shop for all your needs, at affordable <br/> prices to fit every budget. Your happiness is the reason <br/>for our success</p>
+      <button className="mt-8 bg-white text-black font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-200">
+          Shop Now
+        </button>
+        </div>
     </div>
-         
+ 
     </div>
   )
 }

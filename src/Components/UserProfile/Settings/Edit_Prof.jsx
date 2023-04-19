@@ -50,10 +50,6 @@ function EditProf() {
 
         try {
             await axios.put(`/user/updateUser/${currentUser.username}`, inputs);
-
-            // localStorage.clear();
-            // window.location.reload(true);
-            // currentUser = currentUser.reload
             
             navigate("/user/login");
             alert("Sign in again to see changes")

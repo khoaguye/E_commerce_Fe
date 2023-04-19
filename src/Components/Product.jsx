@@ -22,7 +22,7 @@ const [content, setContent] = useState([]);
 
    console.log(content)
   return (
-    <div className="mt-6">
+    <div className="mt-12 pt-4">
         <h1 className='text-green-900 text-[1.5rem] font-bold'>Happy Shopping!!</h1>
            
         <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto ">

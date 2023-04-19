@@ -17,9 +17,6 @@ root.render(
         <App />
       </Provider>
     </AuthContextProvider>
-    {/* <Provider store={store}>
-        <App />
-    </Provider> */}
   </React.StrictMode>
 );
 

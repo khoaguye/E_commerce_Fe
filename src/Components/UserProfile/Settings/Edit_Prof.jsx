@@ -1,18 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { TiShoppingCart } from 'react-icons/ti'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { AiFillEdit } from "react-icons/ai"
 import Footer from '../../Footer';
 import pyramid from '../images/pyramid.png'
+import { AuthContext } from "../../../context/authContext";
+import axios from "axios";
 
 function EditProf() {
+    // const [disableButton1, setDisableButton1] = useState(true)
+    // const [disableButton2, setDisableButton2] = useState(true)
+    // const [disableButton3, setDisableButton3] = useState(true)
+    // const [disableButton4, setDisableButton4] = useState(true)
+    // const [disableButton5, setDisableButton5] = useState(true)
 
-    const [disableButton1, setDisableButton1] = useState(true)
-    const [disableButton2, setDisableButton2] = useState(true)
-    const [disableButton3, setDisableButton3] = useState(true)
-    const [disableButton4, setDisableButton4] = useState(true)
-    const [disableButton5, setDisableButton5] = useState(true)
+    const navigate = useNavigate();
+    
+    const { currentUser } = useContext(AuthContext);
+    const [err, setErr] = useState(null);
+
+    const [inputs, setInputs] = useState({
+        fname: currentUser.fname,
+        lname: currentUser.lname,
+        address: currentUser.address,
+        // email: currentUser.email,
+        phone: currentUser.phone
+    });
+
 
     const cart = useSelector((state) => state.cart)
     const [windowSize, setWindowSize] = useState({
@@ -26,6 +41,23 @@ function EditProf() {
         })
         return total
     }
+    const handleChange = (e) => {
+        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    };
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        try {
+            await axios.put(`/user/updateUser/${currentUser.username}`, inputs);
+            
+            navigate("/user/login");
+            alert("Sign in again to see changes")
+        } catch (err) {
+            setErr(err.response.data);
+        }
+
+    };
     return (
         <>
             <div className="bg-amber-100 w-screen h-screen overflow-x-auto">
@@ -71,14 +103,105 @@ function EditProf() {
                         </li>
                     </ul>
                 </div>
-                <div className = "flex flex-col md:flex-row justify-around ">
-                <Link to="/user/settings" className="">
-                    <button type="button" className="rounded-full text-base  font-bold bg-gradient-to-r bg-orange-500 hover:from-orange-600 hover:to-rose-500 ">
-                        Back to Settings
-                    </button>
-                </Link>
-                <div className=" md:w-[70%] overflow-y-auto mx-auto ">
-                    {/* <div className="h-3/4 mt-auto -translate-x-28 sm:-translate-x-36 md:-translate-x-32 w-full grid grid-cols-1 gap-y-0 justify-center text-xl"> */}
+                <div className=" w-[75%] flex flex-col md:flex-row justify-around ">
+                    <Link to="/user/settings" className="">
+                        <button type="button" className="rounded-full text-base  font-bold bg-gradient-to-r bg-orange-500 hover:from-orange-600 hover:to-rose-500 ">
+                            Back to Settings
+                        </button>
+                    </Link>
+
+                    <form className="w-[75%] " id="signInForm">
+                        <div className="mb-4">
+                           
+                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                First Name:
+                            </label>
+                            <input
+                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                // className="translate-x-4 sm:-translate-y-20 sm:translate-x-4 px-auto mb-0 sm:mb-0 sm:mt-20 sm:text-2xl md:text-3xl md:-translate-x-4 -translate-y-0 border-b-2 border-black"
+                                id="fname"
+                                type="text"
+                                placeholder="First name"
+                                name="fname"
+                                onChange={handleChange}
+
+                            />
+                        </div>
+                        <div className="mb-4 ">
+                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                                Last Name:
+                            </label>
+                            <input
+                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="fname"
+                                type="text"
+                                placeholder="Last name"
+                                name="lname"
+                                onChange={handleChange}
+
+                            />
+                        </div>
+
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="email">
+                                Address
+                            </label>
+                            <input
+                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="email"
+                                type="email"
+                                placeholder="Address"
+                                name="address"
+                                onChange={handleChange}
+
+
+                            />
+                        </div>
+                    
+                        {/* <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
+                                Email
+                            </label>
+                            <input
+                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username"
+                                type="text"
+                                placeholder="Email"
+                                name="email"
+                                onChange={handleChange}
+
+                            />
+                        </div> */}
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
+                                Phone
+                            </label>
+                            <input
+                                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username"
+                                type="text"
+                                placeholder="Phone"
+                                name="phone"
+                                onChange={handleChange}
+
+                            />
+                        </div>
+
+                        <div className="mb-4">
+                            <button
+                                className="w-[100%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button"
+                                onClick={handleClick}
+                            >
+                                Save Changes
+                            </button>
+                            {err && err}
+                        </div>
+                    </form>
+
+                    {/* 
+                { <div className=" md:w-[70%] overflow-y-auto mx-auto ">
+                    { <div className="h-3/4 mt-auto -translate-x-28 sm:-translate-x-36 md:-translate-x-32 w-full grid grid-cols-1 gap-y-0 justify-center text-xl"> }
                     <div >
                         <div className=" sm:h-16 w-80 sm:w-96  mx-auto col-sm-10 d-flex align-items-center">
 
@@ -187,7 +310,7 @@ function EditProf() {
                         <div class="h-12 mb-0">
                         </div>
                     </div>
-                </div>
+                </div> */}
                 </div>
             </div>
             <Footer class="inset-x-0  bottom-0" />

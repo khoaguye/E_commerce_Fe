@@ -40,9 +40,11 @@ function Navbar() {
       <div className='float-up w-[80%] mx-auto my-auto pt-[2em] h-[60%]'>
       <h1 className=" text-[5rem] md:text-[6rem] font-bold text-yellow-600 mt-8"> Sahara</h1>
       <p className =" hidden md:block font-light  lg:text-[1.5rem] md:text-[0.25rem]"> Your one-stop shop for all your needs, at affordable <br/> prices for every budget. Your happiness is the  reason <br/>for our success</p>
+       <Link to = "/product">
        <button className=" ml-[3em] md:ml-0 mt-8 bg-white text-black font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-200">
           Shop Now
         </button>
+        </Link>
         </div>
     </div>
  

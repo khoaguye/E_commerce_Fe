@@ -20,8 +20,14 @@ const Menu = () => {
           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Products</li>
         </Link>
         <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Deals</li>
+        {
+          currentUser?.data.role === "admin" ? 
+          <Link to = "/admin" >
+          <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">{currentUser?.data.role}</li>
+          </Link> :
+           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">{currentUser?.data.role}</li>
+        }
         
-        <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">{currentUser?.data.role}</li>
         {/* <Link to="/user/login">
           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Sign In</li>
         </Link> */}

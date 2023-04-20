@@ -27,7 +27,7 @@ const Menu = () => {
 
         {/* <span>{currentUser?.username}</span> */}
         {currentUser ? (
-          <span onClick={ logout }>Logout</span>
+          <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300" onClick={ logout }>Logout</li>
         ) : (
           <Link className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300" to="/user/login">
             Login

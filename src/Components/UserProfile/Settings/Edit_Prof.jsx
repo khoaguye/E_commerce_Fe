@@ -21,11 +21,10 @@ function EditProf() {
     const [err, setErr] = useState(null);
 
     const [inputs, setInputs] = useState({
-        fname: currentUser.fname,
-        lname: currentUser.lname,
-        address: currentUser.address,
-        // email: currentUser.email,
-        phone: currentUser.phone
+        fname: currentUser.data.fname,
+        lname: currentUser.data.lname,
+        address: currentUser.data.address,
+        phone: currentUser.data.phone
     });
 
 
@@ -49,8 +48,9 @@ function EditProf() {
         e.preventDefault();
 
         try {
-            await axios.put(`/user/updateUser/${currentUser.username}`, inputs);
-            
+            await axios.put(`/user/updateUser/${currentUser.data.username}`, inputs);
+            alert(currentUser.data.username)
+            console.log("should be updating...")
             navigate("/user/login");
             alert("Sign in again to see changes")
         } catch (err) {
@@ -121,7 +121,7 @@ function EditProf() {
                                 // className="translate-x-4 sm:-translate-y-20 sm:translate-x-4 px-auto mb-0 sm:mb-0 sm:mt-20 sm:text-2xl md:text-3xl md:-translate-x-4 -translate-y-0 border-b-2 border-black"
                                 id="fname"
                                 type="text"
-                                placeholder={currentUser?.data.fname}
+                                placeholder= {currentUser.data.fname}
                                 name="fname"
                                 onChange={handleChange}
 
@@ -135,7 +135,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="fname"
                                 type="text"
-                                placeholder={currentUser?.data.lname}
+                                placeholder={currentUser.data.lname}
                                 name="lname"
                                 onChange={handleChange}
 
@@ -150,7 +150,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="email"
-                                placeholder={currentUser?.data.address}
+                                placeholder={currentUser.data.address}
                                 name="address"
                                 onChange={handleChange}
 
@@ -180,7 +180,7 @@ function EditProf() {
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="username"
                                 type="text"
-                                placeholder={currentUser?.data.phone}
+                                placeholder={currentUser.data.phone}
                                 name="phone"
                                 onChange={handleChange}
 

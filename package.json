@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.7"
-  },
-  "proxy": "https://secret-chin-production.up.railway.app/api"
+  }
+
 }

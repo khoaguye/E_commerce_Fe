@@ -7,7 +7,7 @@ const [content, setContent] = useState([]);
   useEffect(() => {
      async function fetchProductContent() {
        try {
-         const response = await axios.get('/product/productContent');
+         const response = await axios.get('https://secret-chin-production.up.railway.app/api/product/productContent');
           console.log(response.data)
          setContent(response.data);
         

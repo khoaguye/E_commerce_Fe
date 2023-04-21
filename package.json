@@ -44,5 +44,5 @@
   "devDependencies": {
     "tailwindcss": "^3.2.7"
   },
-  "proxy": "http://localhost:8800/api"
+  "proxy": "https://ecommercebe-production-e271.up.railway.app/api"
 }

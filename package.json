@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.4",
     "gh-pages": "^5.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
@@ -44,13 +45,7 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.7"
-  },
-  "proxy":{
-    "/api/*":{
-    "target":"https://secret-chin-production.up.railway.app/api",
-    "logLevel": "debug",
-    "secure":false,
-     "cookieDomainRewrite": ""
-   }
   }
+ 
 }
+

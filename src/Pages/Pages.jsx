@@ -23,7 +23,7 @@ function Pages() {
         <Route path ='/product/:id' element ={<Detail_product/>}/>
         <Route path = '/cart' element={<Cart/>}/>
         <Route path = '/admin' element={<Admin/>}/> 
-        <Route path = '/user/login' element={<Login/>}/>
+        <Route path = '/user/loginAccount' element={<Login/>}/>
         <Route path = '/user/register' element={<Register/>}/>
         <Route path = '/user/profile' element={<UserProf/>}/>
         <Route path = '/user/orderhistory' element={<OrderHist/>}/>

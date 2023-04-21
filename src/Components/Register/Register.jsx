@@ -159,7 +159,7 @@ export const Register = () => {
                     Register
                 </button>
                 {err && err}
-                <Link to="/user/login">
+                <Link to="/user/loginAccount">
                     <div className="mt-5">
                         <p class="pb-2 border-b-2">Already have account? Login Here!!!</p>
 

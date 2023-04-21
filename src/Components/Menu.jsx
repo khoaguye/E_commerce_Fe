@@ -23,7 +23,7 @@ const Menu = () => {
         {currentUser ? (
           <li className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300" onClick={ logout }>Logout</li>
         ) : (
-          <Link className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300" to="/user/login">
+          <Link className="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300" to="/user/loginAccount">
             Login
           </Link>
         )}

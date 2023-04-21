@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("/user/login", inputs, {
+    const res = await axios.post("https://secret-chin-production.up.railway.app/api/user/login", inputs, {
       withCredentials: true,
     });
 
@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
   };
   
   const logout = async (inputs) => {
-    await axios.post("/user/logout");
+    await axios.post("https://secret-chin-production.up.railway.app/api/user/logout");
     setCurrentUser(null);
   };
 

@@ -22,9 +22,9 @@ function Warning() {
         };
 
       const handleClick = async (e) => {
-            alert(currentUser.username)
+            alert(currentUser.data.username)
             try {
-                await axios.delete(`/user/deleteUser/${currentUser.username}`, inputs);
+                await axios.delete(`/user/deleteUser/${currentUser.data.username}`, inputs);
                 await axios.post(`/user/logout`);
                 localStorage.clear();
                 window.location.reload(true);

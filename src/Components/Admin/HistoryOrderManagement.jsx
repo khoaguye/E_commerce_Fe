@@ -9,7 +9,7 @@ function CurrentOrderMangement() {
   useEffect(() => {
     async function fetchAllOrders() {
       try {
-        const response = await axios.get('/order/historyOrder');
+        const response = await axios.get('https://secret-chin-production.up.railway.app/api/order/historyOrder');
         setData(response.data);
         setOrderStatuses(response.data.map(order => order.order_status))
       } catch (error) {

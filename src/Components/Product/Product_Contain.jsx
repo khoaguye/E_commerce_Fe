@@ -14,7 +14,7 @@ function Product_Contain() {
      useEffect(() => {
           async function fetchAllProducts() {
                try {
-                 const response = await axios.get('/product/allProduct');
+                 const response = await axios.get('https://secret-chin-production.up.railway.app/api/product/allProduct');
                  setContent(response.data);
                  setsubContent(response.data);
                
@@ -29,7 +29,7 @@ function Product_Contain() {
           async function fetchProducts() {
                try {
                 
-                 const response = await axios.get(`/product/productcategory/${selectedCategory}`);
+                 const response = await axios.get(`https://secret-chin-production.up.railway.app/api/product/productcategory/${selectedCategory}`);
                  setContent(response.data);
                  setsubContent(response.data);
                } catch (error) {

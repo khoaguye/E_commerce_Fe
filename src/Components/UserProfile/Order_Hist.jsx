@@ -23,7 +23,7 @@ function OrderHist() {
   useEffect (() => {
     async function fetchOrderHistory (){
       try{
-        const response = await axios.post("/order/orderByUid",{ uid: currentUser?.data.id })
+        const response = await axios.post("https://secret-chin-production.up.railway.app/api/order/orderByUid",{ uid: currentUser?.data.id })
         console.log(response.data)
         setOrderHistory(response.data)
         console.log(orderHistory)

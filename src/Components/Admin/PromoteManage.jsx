@@ -14,7 +14,7 @@ function Promote_manage() {
   useEffect(() => {
     async function fetchAllProducts() {
       try {
-        const response = await axios.get('/promote/allPromotions');
+        const response = await axios.get('https://secret-chin-production.up.railway.app/api/promote/allPromotions');
         setData(response.data);
         //setImgURL(response.data.products.images[0])
       } catch (error) {

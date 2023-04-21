@@ -19,7 +19,7 @@ function Product_detail() {
   useEffect(() => {
     async function fetchProductContent() {
       try {
-        const response = await axios.get(`/product/productDetail/${params.id}`);
+        const response = await axios.get(`https://secret-chin-production.up.railway.app/api/product/productDetail/${params.id}`);
          console.log(response.data)
         setDetailContent(response.data);
         //setImage(response.data.images)

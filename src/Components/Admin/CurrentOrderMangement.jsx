@@ -11,7 +11,7 @@ function CurrentOrderMangement() {
   useEffect(() => {
     async function fetchAllOrders() {
       try {
-        const response = await axios.get('/order/allOrder');
+        const response = await axios.get('https://secret-chin-production.up.railway.app/api/order/allOrder');
         setData(response.data);
         setOrderStatuses(response.data.map(order => order.order_status))
       } catch (error) {
@@ -39,7 +39,7 @@ function CurrentOrderMangement() {
   const handleUpdate = async (e) =>{
     e.preventDefault();
     try {
-      const update = await axios.put('/order/updateOrder',
+      const update = await axios.put('https://secret-chin-production.up.railway.app/api/order/updateOrder',
       {
         id : idOrder,
         orderStatus: currentOrderStatus
@@ -55,7 +55,7 @@ function CurrentOrderMangement() {
 console.log(data)
 // Delete function used to delete the order
 function handleDelete(index) {
-  axios.delete("/order/deleteOrder", { data: { id: index } })
+  axios.delete("https://secret-chin-production.up.railway.app/api/order/deleteOrder", { data: { id: index } })
   .then(response => {
     console.log(response.data.message);
   })

@@ -71,7 +71,7 @@ console.log(currentUser)
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/order/createOrder", {
+      const response = await fetch("https://secret-chin-production.up.railway.app/api/order/createOrder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ console.log(currentUser)
   useEffect(() => {
      async function fetchPromoteCode() {
        try {
-         const response = await axios.get('/promote/allPromotions');
+         const response = await axios.get('https://secret-chin-production.up.railway.app/api/promote/allPromotions');
           console.log(response.data)
          setPromoteCode(response.data);
          console.log(promoteCode)

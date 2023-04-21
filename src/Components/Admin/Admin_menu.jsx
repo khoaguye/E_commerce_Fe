@@ -37,7 +37,7 @@ function App() {
          const user = JSON.parse(localStorage.getItem("user"));
          const token = user.token;
         console.log(token)
-         const response = await axios.get("/user/getAdmin", {
+         const response = await axios.get("https://secret-chin-production.up.railway.app/api/user/getAdmin", {
          headers: {
           token: `Bearer ${token}`, // add Authorization header with token value
          },

@@ -24,8 +24,8 @@ function Warning() {
       const handleClick = async (e) => {
             alert(currentUser.data.username)
             try {
-                await axios.delete(`/user/deleteUser/${currentUser.data.username}`, inputs);
-                await axios.post(`/user/logout`);
+                await axios.delete(`https://secret-chin-production.up.railway.app/api/user/deleteUser/${currentUser.data.username}`, inputs);
+                await axios.post(`https://secret-chin-production.up.railway.app/api/user/logout`);
                 localStorage.clear();
                 window.location.reload(true);
             //     navigate("/");

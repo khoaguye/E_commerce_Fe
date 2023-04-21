@@ -48,10 +48,10 @@ function EditProf() {
         e.preventDefault();
 
         try {
-            await axios.put(`/user/updateUser/${currentUser.data.username}`, inputs);
+            await axios.put(`https://secret-chin-production.up.railway.app/api/user/updateUser/${currentUser.data.username}`, inputs);
             alert(currentUser.data.username)
             console.log("should be updating...")
-            navigate("/user/login");
+            navigate("https://secret-chin-production.up.railway.app/api/user/login");
             alert("Sign in again to see changes")
         } catch (err) {
             setErr(err.response.data);

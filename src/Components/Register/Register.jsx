@@ -30,11 +30,12 @@ export const Register = () => {
         e.preventDefault();
 
         try {
-            await axios.post("http://localhost:8800/api/user/register", inputs);
+            await axios.post("https://secret-chin-production.up.railway.app/api/user/register", inputs);
             setErr("Success! Who's a good boi!");
             //   form.reset();
             //   form2.reset();
-            window.location.replace("http://localhost:3000/user/login");
+            // I comment this to deploy, fix that later
+           // window.location.replace("http://localhost:3000/user/login");
         } catch (err) {
             setErr(err.response.data);
         }

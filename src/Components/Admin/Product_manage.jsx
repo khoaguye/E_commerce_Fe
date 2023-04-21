@@ -19,7 +19,7 @@ function Product_manage() {
   useEffect(() => {
     async function fetchAllProducts() {
       try {
-        const response = await axios.get('/product/allProduct');
+        const response = await axios.get('https://secret-chin-production.up.railway.app/api/product/allProduct');
         setData(response.data);
         //setImgURL(response.data.products.images[0])
       } catch (error) {
@@ -69,7 +69,7 @@ function Product_manage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const add = await axios.post('/product/addProduct', productContent);
+      const add = await axios.post('https://secret-chin-production.up.railway.app/api/product/addProduct', productContent);
       setData([...data, add.data]);
       console.log(add.data)
     } catch (error) {
@@ -99,7 +99,7 @@ function handleEdit(index) {
 const handleUpdate = async (e) =>{
   e.preventDefault();
   try {
-    const update = await axios.put('/product/updateProduct', productContent);
+    const update = await axios.put('https://secret-chin-production.up.railway.app/api/product/updateProduct', productContent);
       setData([...data, update.data]);
       console.log(update.data)
   } catch (error) {
@@ -110,7 +110,7 @@ const handleUpdate = async (e) =>{
   setIdShow(!idShow)
 } 
 function handleDelete(index) {
-  axios.delete("/product/deleteProduct", { data: { id: index } })
+  axios.delete("https://secret-chin-production.up.railway.app/api/product/deleteProduct", { data: { id: index } })
   .then(response => {
     console.log(response.data.message);
   })

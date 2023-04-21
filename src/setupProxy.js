@@ -7,6 +7,7 @@ module.exports = function(app) {
         "headers": {
             "host": "secret-chin-production.up.railway.app"
            },
+           "changeOrigin": true,
         "cookieDomainRewrite": "" }
         
     ));

@@ -45,5 +45,14 @@
   "devDependencies": {
     "tailwindcss": "^3.2.7"
   },
-  "proxy": "https://secret-chin-production.up.railway.app/api"
+  "proxy":{
+    "/api/*":{
+    "target":"https://secret-chin-production.up.railway.app/api",
+    "secure":false,
+    "headers": {
+      "host": "secret-chin-production.up.railway.app/api"
+     },
+     "cookieDomainRewrite": ""
+   }
+  }
 }

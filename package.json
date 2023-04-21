@@ -48,10 +48,8 @@
   "proxy":{
     "/api/*":{
     "target":"https://secret-chin-production.up.railway.app/api",
+    "logLevel": "debug",
     "secure":false,
-    "headers": {
-      "host": "secret-chin-production.up.railway.app/api"
-     },
      "cookieDomainRewrite": ""
    }
   }

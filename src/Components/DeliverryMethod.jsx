@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 
 const DeliveryMethod = () => {
   const [customerInfo, setCustomerInfo] = useState({
@@ -8,6 +8,8 @@ const DeliveryMethod = () => {
     phone: '',
   });
   const [deliveryMethod, setDeliveryMethod] = useState('');
+
+  const { currentUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ const DeliveryMethod = () => {
             type="text"
             id="name"
             className="form-input mt-1 block w-full rounded-md border shadow-s "
-            value={customerInfo.name}
+            value={currentUser?.data.fname + currentUser?.data.lname}
             onChange={(e) =>
               setCustomerInfo({ ...customerInfo, name: e.target.value })
             }
@@ -41,7 +43,7 @@ const DeliveryMethod = () => {
             type="text"
             id="address"
             className="form-input mt-1 block w-full rounded-md border shadow-sm"
-            value={customerInfo.address}
+            value={currentUser?.data.address}
             onChange={(e) =>
               setCustomerInfo({ ...customerInfo, address: e.target.value })
             }
@@ -55,7 +57,7 @@ const DeliveryMethod = () => {
             type="text"
             id="phone"
             className="form-input mt-1 block w-full rounded-md border shadow-sm "
-            value={customerInfo.phone}
+            value={currentUser?.data.phone}
             onChange={(e) =>
               setCustomerInfo({ ...customerInfo, phone: e.target.value })
             }
@@ -99,12 +101,7 @@ const DeliveryMethod = () => {
         </label>
       </div>
     </div>
-    <button
-      type="submit"
-      className='w-[100%] rounded-lg bg-green-600  hover:bg-green-900 py-3 text-white mt-3'
-    >
-      Submit
-    </button>
+    
   </form>
 </div>
   )

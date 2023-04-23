@@ -12,7 +12,12 @@ function Cart_content() {
   const [selectedOption, setSelectedOption] = useState("credit-card");
   const [promoteCode, setPromoteCode] = useState([]); 
   const [annouce, setAnnouce ] = useState("")
- // const [promoteText, setPromoteText] = useState("");
+  const [inputs, setInputs] = useState({
+    expiryDate: "",
+     cvv: "",
+     cardNumber: "",
+     nameOnCard: "",
+   })
  const { currentUser } = useContext(AuthContext);
   const dispatch = useDispatch() 
   const handleOptionChange = (event) => {
@@ -27,13 +32,11 @@ function Cart_content() {
 
   const cart = useSelector((state) => state.cart)
    console.log(cart)
-  // function getSubTotalPrice(){
-  //   let total = 0
-  // cart.forEach(item => {
-  //   total += item.prices
-  // })
-  // return total
-  // }
+
+   //handle input field:
+   const handleInputChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+};
   
 
   const getTotal = () => {
@@ -70,6 +73,21 @@ console.log(currentUser)
   }
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
+    if(inputs.cardNumber === "" ){
+      setAnnouce("Missing card number")
+      // setErr.err = "erro0r"
+    }
+    else if(inputs.expiryDate === "" ){
+      setAnnouce("Missing expiryDate")
+    }
+    else if(inputs.cvv === "" ){
+      setAnnouce("Missing CVV")
+
+    }
+    else if(inputs.nameOnCard === "" ){
+      setAnnouce("Missing name on card")
+    }
+    else{ 
     try {
       const response = await fetch("https://secret-chin-production.up.railway.app/api/order/createOrder", {
         method: "POST",
@@ -86,7 +104,7 @@ console.log(currentUser)
       console.error(error);
       setAnnouce("Error with payment")
     }
-   
+  }
   };
 
     
@@ -107,9 +125,14 @@ console.log(currentUser)
     
    }, []);
 
-  
+   let couponApplied = false;
     // Function handle apply coupon 
     const handleApplyCoupon = (() => {
+      if (couponApplied) {
+        setAnnouce("Coupon has already been applied");
+        return;
+      }
+
       const updatedCart = cart.map(item => {
         const promotion = promoteCode.find(p => p.category === item.category);
         let promoteText = "";
@@ -124,6 +147,7 @@ console.log(currentUser)
           return {...item, promoteText};
         }
       });
+      couponApplied = true;
       dispatch(updatePrice(updatedCart));
     });
 
@@ -208,6 +232,7 @@ console.log(currentUser)
                       type="text"
                       id="cardNumber"
                       name="cardNumber"
+                      onChange = {handleInputChange}
                       className="form-input w-full border"
                     />
                   </div>
@@ -222,6 +247,7 @@ console.log(currentUser)
                       type="text"
                       id="expiryDate"
                       name="expiryDate"
+                      onChange = {handleInputChange}
                       className="form-input w-full border"
                     />
                   </div>
@@ -236,6 +262,7 @@ console.log(currentUser)
                       type="text"
                       id="cvv"
                       name="cvv"
+                      onChange = {handleInputChange}
                       className="form-input w-full border"
                     />
                   </div>
@@ -250,6 +277,7 @@ console.log(currentUser)
                       type="text"
                       id="nameOnCard"
                       name="nameOnCard"
+                      onChange = {handleInputChange}
                       className="form-input w-full border"
                     />
                   </div>
@@ -266,14 +294,7 @@ console.log(currentUser)
                 </div>
               </div>
             )}
-            <div className="mt-6">
-              <button
-                type="submit"
-                className="bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Submit
-              </button>
-            </div>
+           
           </form>
         </div>
         <DeliveryMethod />

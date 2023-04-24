@@ -98,7 +98,7 @@ console.log(currentUser)
       });
       const data = await response.json();
       console.log(data);
-      setAnnouce("Your Order is already placed")
+      setAnnouce("Your Order has been placed")
       dispatch(clearCart());
     } catch (error) {
       console.error(error);

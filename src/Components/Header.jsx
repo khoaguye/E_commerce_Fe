@@ -32,7 +32,7 @@ function handleSearchValueChange(e){
     <div className='md:mt-[1em] mt-[2em]  flex md:flex-row flex-col justify-between'>
       <div className="flex w-[100%] justify-between">     
       <Link to = "/">
-         <h1 className="text-green-900 md:text-[1.5rem]"><span className=' md:text-[2.5rem] text-[1.75rem] font-bold'>Shop</span> for <span className='md:text-[2.5rem] text-[1.75rem] font-bold'>You</span></h1>   
+         <h1 className="text-green-900 md:text-[1.5rem]"><span className=' md:text-[2.5rem] text-[1.75rem] font-bold'>Sahara</span> for <span className='md:text-[2.5rem] text-[1.75rem] font-bold'>You</span></h1>   
          </Link> 
          {
             !menuToggle ?

@@ -11,6 +11,7 @@ function Product_manage() {
   const [price, setPrice] = useState("")
   const [images, setImages] = useState([])
   const [category, setCategory] = useState("")
+  const [amount, setAmount] = useState("")
   const [toggleEdit, setToggleEdit] = useState(false)
 
   // function addItem(item) {
@@ -54,7 +55,9 @@ function Product_manage() {
   function handleCategoryChange(e) {
     setCategory(e.target.value)
   }
-
+  function handleAmountChange(e) {
+    setAmount(e.target.value)
+  }
   const productContent = {
     id: id,
     title: title,
@@ -63,6 +66,7 @@ function Product_manage() {
     price: price,
     category: category,
     images: images,
+    amount: amount
   }
 
 
@@ -81,6 +85,7 @@ function Product_manage() {
   setCategory("")
   setPrice("")
   setImages("")
+  setAmount("")
 }
 
 
@@ -93,6 +98,7 @@ function handleEdit(index) {
   setDescription(item.description);
   setPrice(item.price)
   setImages(item.images)
+  setAmount(item.amount)
   setToggleEdit(true)
   setIdShow(!idShow)
 }
@@ -214,6 +220,15 @@ return (
             onChange={handleImagesChange}
           />
         </label>
+        <label className="block mb-2">
+          Amount:
+          <input
+            className="block w-full border border-gray-400 rounded py-2 px-3"
+            type="text"
+            value={amount}
+            onChange={handleAmountChange}
+          />
+        </label>
         <label> </label>
         {!toggleEdit ?
         <button
@@ -255,6 +270,7 @@ return (
                 <td className="p-2">{item.description}</td>
                 <td className="p-2 ">${item.price}</td>
                 <td className="">{item.images}</td>
+                <td className="">{item.amount}</td>
                 <td className="p-2 flex justify-center items-center gap-2">
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2"

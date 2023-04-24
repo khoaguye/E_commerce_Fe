@@ -68,7 +68,7 @@ function Filter_bar() {
   
 
   return (
-    <div className=" md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none ">
+    <div className=" md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none overflow-y-auto">
       <div className="mt-4 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Categories</h2>
           <CategoryDropdown />
@@ -133,7 +133,7 @@ function Filter_bar() {
       <button 
         className=" w-[100%] mt-4 bg-green-900 text-white  px-5 py-3 text-[1.25rem] tracking-wider"
       
-      >SHOW {subContent.length} items</button>
+      > {subContent.length} items</button>
 
     </div>
   );

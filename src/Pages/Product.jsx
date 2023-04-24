@@ -74,10 +74,8 @@ function Product() {
                 <Product_Contain />
               </div>
               {filterMobile && (
-                <div className="absolute top-0 left-0 h-full w-full z-10 bg-white overflow-y-scroll"
-                // style={{ maxHeight: 'calc(100vh - 4rem)' }}
-                onTouchStart={e => e.stopPropagation()}
-                onTouchMove={e => e.stopPropagation()}>
+                <div className="absolute top-0 left-0 h-full w-full z-10 bg-white"
+               >
                   <Filter_bar />
                 </div>
               )}

@@ -56,7 +56,7 @@ function Promote_manage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const add = await axios.post('/promote/addPromo', productContent);
+      const add = await axios.post('https://secret-chin-production.up.railway.app/api/promote/addPromo', productContent);
       setData([...data, add.data]);
       console.log(add.data)
     } catch (error) {
@@ -71,7 +71,7 @@ function Promote_manage() {
 
 
 function handleEdit(index) {
-  const item = data[index-1];
+  const item = data[index-2];
   setId(index)
   setcode(item.code)
   setCategory(item.category)
@@ -82,7 +82,7 @@ function handleEdit(index) {
 const handleUpdate = async (e) =>{
   e.preventDefault();
   try {
-    const update = await axios.put('/promote/updatePromo', productContent);
+    const update = await axios.put('https://secret-chin-production.up.railway.app/api/promote/updatePromo', productContent);
       setData([...data, update.data]);
       console.log(update.data)
   } catch (error) {
@@ -93,7 +93,7 @@ const handleUpdate = async (e) =>{
   setIdShow(!idShow)
 } 
 function handleDelete(index) {
-  axios.delete("/promote/deletePromotion", { data: { id: index } })
+  axios.delete("https://secret-chin-production.up.railway.app/api/promote/deletePromotion", { data: { id: index } })
   .then(response => {
     console.log(response.data.message);
   })

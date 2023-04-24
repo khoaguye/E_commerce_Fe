@@ -44,20 +44,49 @@ function EditProf() {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
     };
-    const handleClick = async (e) => {
-        e.preventDefault();
+    // const handleClick = async (e) => {
+    //     e.preventDefault();
 
+    //     try {
+    //         await axios.put(`https://secret-chin-production.up.railway.app/api/user/updateUser/${currentUser.data.username}`, inputs);
+    //         alert(currentUser.data.username)
+    //         console.log("should be updating...")
+    //         navigate("https://secret-chin-production.up.railway.app/api/user/login");
+    //         alert("Sign in again to see changes")
+    //     } catch (err) {
+    //         setErr(err.response.data);
+    //     }
+
+    // };
+
+    const dataUser = {
+        id : currentUser.data.id,
+        fname: inputs.fname,
+        lname: inputs.lname,
+        address: inputs.address,
+        phone: inputs.phone
+    }
+    const handleClickSave = async (e) =>{
+        e.preventDefault();
+        // const user = JSON.parse(localStorage.getItem("user"));
+        // const token = user.token;
+        //console.log(token)
         try {
-            await axios.put(`https://secret-chin-production.up.railway.app/api/user/updateUser/${currentUser.data.username}`, inputs);
-            alert(currentUser.data.username)
-            console.log("should be updating...")
+            const response = await axios.put("https://secret-chin-production.up.railway.app/api/user/updateProfile", {
+        
+            // headers: {
+            //  token: `Bearer ${token}`, // add Authorization header with token value
+            // },
+           
+           }) 
+            console.log(response.data)
+            console.log(dataUser)
             navigate("https://secret-chin-production.up.railway.app/api/user/login");
             alert("Sign in again to see changes")
-        } catch (err) {
-            setErr(err.response.data);
-        }
-
-    };
+          } catch (error) {
+            console.log(error)
+          }
+    }
     return (
         <>
             <div className="bg-amber-100 w-screen h-screen overflow-x-auto">
@@ -177,7 +206,7 @@ function EditProf() {
                             <button
                                 className="w-[100%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="button"
-                                onClick={handleClick}
+                                onClick={handleClickSave}
                             >
                                 Save Changes
                             </button>
